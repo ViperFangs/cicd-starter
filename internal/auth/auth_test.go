@@ -7,8 +7,8 @@ import (
 )
 
 type testCase struct {
-	name          string
-	headers       http.Header
+	name           string
+	headers        http.Header
 	expectedAPIKey string
 	expectedErr    error
 }
@@ -16,14 +16,14 @@ type testCase struct {
 func TestGetAPIKey(t *testing.T) {
 	tests := []testCase{
 		{
-			name:          "valid header",
-			headers:       http.Header{"Authorization": []string{"ApiKey api-key"}},
+			name:           "valid header",
+			headers:        http.Header{"Authorization": []string{"ApiKey api-key"}},
 			expectedAPIKey: "api-key",
 			expectedErr:    nil,
 		},
 		{
-			name:          "missing authorization header",
-			headers:       http.Header{},
+			name:           "missing authorization header",
+			headers:        http.Header{},
 			expectedAPIKey: "",
 			expectedErr:    ErrNoAuthHeaderIncluded,
 		},
